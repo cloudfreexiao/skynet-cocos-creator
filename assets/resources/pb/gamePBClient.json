@@ -1,0 +1,6 @@
+{
+	"100":"GamePB.EnterWorldReq",
+	"101":"GamePB.AuthWSLobbyReq",
+	"200":"GamePB.createPlayerReq",
+	"100000":"GamePB.StringMessage"
+}

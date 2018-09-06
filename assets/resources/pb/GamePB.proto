@@ -1,0 +1,86 @@
+package GamePB;
+//不存在的消息， 消息没有对应的请求/返回
+message NilMessage { }
+message StatusCodeMessage{
+    optional int32 res = 1; // 返回结果对应 errcode
+}
+message UIDMessage {
+    optional string uidValue = 1; //
+}
+message INT32Message {
+    optional int32 value = 1; // int32数字
+}
+message StatusMessage{
+    optional int32 res=1;
+}
+message StringMessage{
+    optional string str=1;
+}
+message ItemProto{
+    optional uint32 protoId = 1; // 物品原型id
+    optional uint32 count   = 2; // 原型数量
+}
+
+//大厅模块
+service C2SLobby{
+    rpc enterGameWorld(EnterWorldReq) returns (EnterWorldResp) {option(rpcid)=100;}
+    rpc authWSLobby(AuthWSLobbyReq)  returns (AuthWSLobbyResp) {option(rpcid)=101;}
+}
+service S2CLobby{
+}
+message EnterWorldReq {
+    required uint32 worldID =1;
+}
+message EnterWorldResp{
+    optional  int32 res =1;
+    optional  int32 has_player =2; //1 有角色信息 0没有
+    optional uint32 enterTime =3;
+}
+message AuthWSLobbyReq {
+    required string openID =1;
+    required string secret =2;
+    required string faceID =3;
+}
+message AuthWSLobbyResp {
+    optional int32 res =1;
+    optional string resmsg =2;
+}
+service C2SPlayer{
+    rpc createPlayer(createPlayerReq) returns(createPlayerResp) {option(rpcid)=200;}
+    rpc keepAlive(NilMessage) returns(keepAliveResp) {option(rpcid)=201;}
+    rpc logout(NilMessage) returns(StatusCodeMessage) {option(rpcid)=202;}
+    
+    rpc gmCMD(StringMessage) returns(StatusMessage) {option(rpcid)=100000;}
+}
+service S2CPlayer{
+    //同步玩家基础信息
+    rpc syncPlayerInfo(PlayerProfileInfo) returns (NilMessage) {option(rpcid)=250;}
+    //踢号消息（同一个账号在多处登录）
+    rpc kickPlayer(NilMessage) returns(NilMessage) {option(rpcid)=251;}
+}
+message createPlayerReq{
+    required string name =1;//玩家名
+    required int32 avatar =2; //头像
+}
+message createPlayerResp{
+    optional int32 res =1; //errcode
+    optional uint32 enterTime =2; //进入游戏时间    
+}
+//玩家 核心数据
+message PlayerProfileInfo{
+    optional string uin = 1;//唯一ID
+    optional string name =2;//名称
+    optional int32 avatar =3;//头像
+    optional int32 ingot =4; //砖石
+    optional int32 coin =5; //金币
+    optional string avatar_url = 6;//头像url
+    optional string ip = 7;
+}
+message keepAliveResp{
+    optional uint32 now =1; //当前时间戳
+}
+// 玩家简单信息[用于聊天排行榜等玩家简单信息显示]
+message PlayerSimpleInfo {
+    optional string     uin             = 1; // 唯一ID
+    optional string     name            = 2; // 玩家名
+}

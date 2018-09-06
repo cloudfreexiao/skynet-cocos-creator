@@ -1,0 +1,9 @@
+{
+	"100":"GamePB.EnterWorldResp",
+	"101":"GamePB.AuthWSLobbyResp",
+	"200":"GamePB.createPlayerResp",
+	"201":"GamePB.keepAliveResp",
+	"202":"GamePB.StatusCodeMessage",
+	"100000":"GamePB.StatusMessage",
+	"250":"GamePB.PlayerProfileInfo"
+}
