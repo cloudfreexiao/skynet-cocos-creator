@@ -20,12 +20,9 @@
 * lib
     * puremvc puremvc源代码和d.ts文件
 * model
-    * vos vo对象
+    * GameProxy.ts ws数据代理
+    * HttpProxy.ts http数据代理
     * GameProxy.ts 游戏数据代理示例
-* services 服务
-    * api.ts fetch请求包装
-* utils
-    * request.ts fetch包装
 * view
     * component 视图组件
     * StartViewMediator.ts Start场景中介
