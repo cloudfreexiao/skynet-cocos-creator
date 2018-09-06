@@ -1,5 +1,6 @@
-# cocos-creator-puremvc
-cocos-creator-puremvc 是一个cocos creator项目基础架构。
+# skynet-cocos-creator-client
+本项目是基于[cocos-creator-puremvc](https://github.com/ikerlin/cocos-creator-puremvc) 为基础 搭建的一个cocos creator 
+可以与[skynet](https://github.com/cloudwu/skynet)通信的 基础架构项目。
 
 ### 技术栈
 * typescript Version 3.0.1
