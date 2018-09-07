@@ -23,7 +23,7 @@ export class handler {
         //持久的handler, exec可能会执行多次，每次执行前要清理一下旧参数
         if (this.is_persist && this.times > 0) {
             this.args = [];
-            cc.info("handler exec", this.times, "times, clear prev args");
+            cc.log("handler exec", this.times, "times, clear prev args");
         }
 
         this.args = this.args.concat(extras);
