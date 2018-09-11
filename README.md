@@ -19,6 +19,7 @@
     * StartupCommand.ts 启动Command
 * lib
     * puremvc puremvc源代码和d.ts文件
+    * state-machine状态机
 * model
     * GameProxy.ts ws数据代理
     * HttpProxy.ts http数据代理
