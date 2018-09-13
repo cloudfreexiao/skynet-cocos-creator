@@ -18,7 +18,7 @@
     * commands 游戏内Command，增加Command基本都应该在这里
     * StartupCommand.ts 启动Command
 * lib
-    * puremvc puremvc源代码和d.ts文件
+    * puremvc
     * state-machine状态机
     * behavior3行为树
 * model
